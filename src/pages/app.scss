@@ -1,0 +1,167 @@
+h1 {
+  color: green;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  color: #333;
+
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #f8f9fa inset;
+  color: #555 !important;
+}
+
+span.highlight {
+  font-style: italic;
+  font-size: 18px;
+  font-weight: bold;
+}
+.navbar {
+  background-color: #3E1E68;
+  color: white;
+  .nav-item-custom {
+    padding: 0px 20px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .nav-selected {
+    background-color: white;
+    color: #3E1E68;
+    border: 1px solid white;
+  }
+
+  .nav-item:not(:first-child) {
+    margin-left: -1px;
+  }
+  .nav-item:last-child {
+    right: 20px;
+    position: absolute;
+  }
+  .btn {
+    background-color: white;
+  }
+  .btn:hover {
+    background-color: #212529;
+  }
+}
+
+.btn-primary {
+    background-color: #622da9;
+    border-color: #622da9;
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: #4f2588 !important;
+    border-color: #4f2588 !important;
+    box-shadow: none;
+}
+
+
+.login-page-wrapper {
+    background-color: #3E1E68;
+}
+.background-svgs {
+  width: 100vw;
+  min-height: 100vh;
+  top:0;
+  position: absolute;
+  overflow: hidden;
+}
+
+$particleSize: 30vmin;
+$animationDuration: 6s;
+$amount: 20;
+
+.background-svgs svg {
+  border-radius: $particleSize;
+  backface-visibility: hidden;
+  position: absolute;
+  //animation-name: move;
+  animation-duration: $animationDuration;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: blur(4px);
+  $colors: (
+    #583C87,
+    #E45A84,
+    #FFACAC
+  );
+  @for $i from 1 through $amount {
+    &:nth-child(#{$i}) {
+      fill: nth($colors, random(length($colors)));
+      top: random(100) * 1%;
+      left: random(100) * 1%;
+      animation-duration: (random($animationDuration * 10) / 10) * 1s + 10s;
+      animation-delay: random(($animationDuration + 10s) * 10) / 10 * -1s;
+      transform-origin: (random(50) - 25) * 1vw (random(50) - 25) * 1vh;
+      $blurRadius: (random() + 0.5) * $particleSize * 0.5;
+      $x: if(random() > 0.5, -1, 1);
+      width: $blurRadius;
+      height: $blurRadius;
+      //box-shadow: ($particleSize * 2 * $x) 0 $blurRadius currentColor;
+    }
+  }
+}
+
+@keyframes move {
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}
+
+$breakpoint-mobile: 480px; 
+
+@media (max-width: $breakpoint-mobile) {
+    table { 
+        table-layout:fixed;
+        overflow-x: auto;
+        display: block;
+    }
+    td { 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        word-wrap: break-word;
+    }
+    .background-svgs {
+        min-height: -webkit-fill-available;
+    }
+}
+
+svg text {
+  text-anchor: middle;
+  pointer-events: none;
+  fill: white;
+  dominant-baseline: middle;
+}
+circle {
+  transition: .5s;
+  fill-opacity: .75;
+}
+circle:hover {
+  fill-opacity: 1;
+}
+
+div.tooltip { 
+    position: absolute;     
+    text-align: center;     
+    padding: 10px;       
+    font-size: 14px;
+    border: 0px;    
+    border-radius: 8px;     
+    pointer-events: none;
+    background-color: #ccc;     
+}
